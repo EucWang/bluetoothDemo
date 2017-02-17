@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="demo.wxn.cn.demobluetooth.activity.MainActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_info"-->
+        <!--android:layout_below="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="蓝牙操作DEMO" />-->
+
+    <!---->
+    <TextView
+        android:id="@+id/tv_local_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="10dp"
+        android:text="本机蓝牙信息:" />
+
+    <TextView
+        android:id="@+id/tv_local_info_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_local_info"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="8dp"
+        android:textColor="#000" />
+    <!---->
+    <TextView
+        android:id="@+id/tv_bonds_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_local_info_value"
+        android:layout_marginTop="10dp"
+        android:text="已经配对的设备:" />
+
+    <TextView
+        android:id="@+id/tv_bonds_devices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_bonds_info"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="8dp"
+        android:textColor="#000" />
+
+</RelativeLayout>

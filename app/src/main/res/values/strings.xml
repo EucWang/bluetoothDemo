@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">demoBluetooth</string>
+    <string name="discovery">扫描</string>
+</resources>
