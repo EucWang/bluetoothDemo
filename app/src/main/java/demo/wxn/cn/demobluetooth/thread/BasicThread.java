@@ -1,4 +1,4 @@
-package demo.wxn.cn.demobluetooth.utils;
+package demo.wxn.cn.demobluetooth.thread;
 
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
@@ -29,41 +29,12 @@ public abstract class BasicThread extends Thread {
 
     protected String lastContent;
 
-    private String content = null;
-
-    /**
-     * 当线程启动之后,
-     * 写出数据到输出流中的方法
-     * @param content
-     */
-    public void setSendContent(String content) {
-        synchronized (this) {
-            this.content = content;
-        }
-    }
-
     /**
      * 子类必须调用的方法
      * @param mHandler
      */
     public void setHandler(Handler mHandler){
         this.mHandler = mHandler;
-    }
-
-
-    /**
-     * 在线程的run()方法中调用
-     * 从EditText中读取内容,然后发送出去
-     * @throws IOException
-     */
-    protected void sendMsg() throws IOException {
-        if (content != null && !"".equals(content.trim())) {
-            synchronized (this) {
-                mmOutStream.write(content.getBytes("UTF-8"));
-                mmOutStream.flush();
-                content = null;
-            }
-        }
     }
 
     /**
@@ -87,7 +58,22 @@ public abstract class BasicThread extends Thread {
     }
 
     /**
-     * 关闭SOcket的方法
+     * 通过输出流向Socket连接的另一端发送数据
+     * @param content
+     */
+    public void sendMsg(String content){
+        if (content != null && !"".equals(content.trim())) {
+            try {
+                mmOutStream.write(content.getBytes("UTF-8"));
+                mmOutStream.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 关闭Socket的方法
      */
     public void cancel() {
         try {
